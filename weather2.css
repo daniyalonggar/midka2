@@ -1,0 +1,276 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0e7ff;
+    text-align: center;
+    padding: 20px;
+    color: #333;
+    margin: 0;
+}
+
+/* Контейнер для содержимого */
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+/* Ввод и кнопки */
+input {
+    padding: 12px;
+    font-size: 16px;
+    width: 80%;
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #303b47;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 123, 255, 0.3);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    background-color: #004492;
+}
+
+/* Секции */
+#city-info {
+    margin-top: 20px;
+}
+
+#forecast-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.forecast-day {
+    padding: 15px;
+    background-color: #f1f4fa;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    flex: 1;
+    min-width: 120px;
+    margin: 10px;
+}
+
+.forecast-day:hover {
+    transform: scale(1.05);
+}
+
+#unit-toggle-container {
+    margin-top: 25px;
+}
+
+#unit-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: 2px solid #007BFF;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#unit-toggle:hover {
+    background-color: #0056b3;
+    box-shadow: 0 8px 16px rgba(0, 123, 255, 0.3);
+}
+
+#unit-toggle .active {
+    background-color: white;
+    color: #007BFF;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#unit-celsius, #unit-fahrenheit {
+    flex: 1;
+    text-align: center;
+}
+
+#suggestions-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px auto 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    width: 80%;
+    z-index: 1;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#suggestions-list li {
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#suggestions-list li:hover {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Модальное окно */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .container {
+        padding: 20px;
+    }
+
+    input {
+        width: 90%;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+    }
+
+    #forecast-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    #forecast-container {
+        flex-direction: column;
+    }
+
+    .forecast-day {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    #unit-toggle-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    input, button {
+        font-size: 14px;
+    }
+
+    #forecast-container {
+        gap: 10px;
+    }
+
+    .forecast-day {
+        width: 100%;
+    }
+}

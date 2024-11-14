@@ -1,0 +1,282 @@
+/* Общий стиль */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8b400, #ff8000);
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #ff8000;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Сетка */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Карточки рецептов */
+.recipe-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.recipe-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.recipe-card img:hover {
+    transform: scale(1.05);
+}
+
+.recipe-card h3 {
+    margin: 15px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* Кнопки избранного и информации */
+.favorite-btn.heart-btn {
+    font-size: 24px;
+    color: red;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+.favorite-btn.heart-btn.active {
+    color: black;
+}
+
+.info-btn {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.info-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding-top: 40px;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: slideUp 0.4s ease;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ff6347;
+}
+
+/* Кнопка избранного в модальном окне */
+#modalFavoriteButton {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#modalFavoriteButton:hover {
+    background-color: #ff4500;
+}
+
+/* Дополнительная информация в модальном окне */
+#recipeInfo {
+    margin-top: 20px;
+}
+
+#recipeInfo p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+#ingredientsList {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+#nutritionInfo {
+    margin-top: 10px;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    header {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    header {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .recipe-card {
+        padding: 15px;
+    }
+    header {
+        font-size: 1.2rem;
+    }
+    .info-btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    header {
+        font-size: 1.3rem;
+    }
+    .recipe-card h3 {
+        font-size: 1.1em;
+    }
+    input[type="text"] {
+        font-size: 1em;
+    }
+    .info-btn {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 1.1em;
+    }
+    #modalFavoriteButton {
+        width: 100%;
+        padding: 12px 0;
+    }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.search-container {
+    position: relative; /* Чтобы #suggestions позиционировался относительно этого контейнера */
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%; /* Появляется сразу под полем ввода */
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    display: none; /* По умолчанию скрыто */
+}
+
+.suggestions p {
+    padding: 8px 12px;
+    margin: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: #333;
+}
+
+.suggestions p:hover {
+    background-color: #f0f0f0;
+}

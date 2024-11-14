@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Recipe App</title>
+</head>
+<body>
+    <header>
+        <h1>Recipe Finder</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search recipes by ingredients or dish name">
+            <div id="suggestions" class="suggestions"></div> <!-- Контейнер для автоподсказок -->
+            <button id="searchButton">Search</button>
+            <button id="favoritesButton">Favorites</button>
+            <button id="backButton" style="display: none;">Back</button>
+        </div>
+        
+    </header>
+    
+    <main>
+        <div id="recipeGrid" class="grid"></div>
+        <div id="favoritesGrid" class="grid" style="display: none;"></div> <!-- Сетка для избранного -->
+    </main>
+    
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2 id="recipeTitle"></h2>
+            <img id="recipeImage" src="" alt="">
+            <p id="recipeDescription"></p>
+            <ul id="ingredientsList"></ul>
+            <div id="nutritionInfo"></div>
+            <div id="instructions"></div>
+            <div id="recipeInfo"></div> <!-- Новая секция для информации -->
+            <button id="modalFavoriteButton" class="favorite-btn">♥</button>
+        </div>
+    </div>
+    
+
+  <script src="app.js"></script>
+</body>
+</html>

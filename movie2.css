@@ -1,0 +1,376 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #1e1e1e;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+}
+
+#search-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+}
+
+#search-input:focus {
+    outline: none;
+    border: 2px solid #ff9f00;
+}
+
+button {
+    background-color: #ff9f00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e68900;
+}
+
+#main-page-container, #watchlater-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 100px;
+}
+
+#sort-buttons {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#sort-buttons button {
+    margin: 0 10px;
+}
+
+#genre-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#movies-grid, #watchlater-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.movie-card {
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: scale(1);
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 3px solid #ff9f00;
+}
+
+.movie-card h3 {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.movie-card p {
+    padding: 0 10px;
+    font-size: 14px;
+}
+
+.movie-card button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    margin: 0;
+}
+
+.movie-card .details-btn {
+    left: 120px;
+}
+
+.movie-card .remove-btn {
+    background-color: #ff4d4d;
+    margin-left: 10px;
+}
+
+.movie-card .remove-btn:hover {
+    background-color: #e63946;
+}
+
+#watchlater-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#movie-details-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    color: #fff;
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+@media screen and (max-width: 768px) {
+    #movies-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .movie-card {
+        transform: scale(1);
+    }
+}
+#movie-details-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    color: #fff;
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.modal-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.modal-content li {
+    margin-bottom: 5px;
+}
+
+.modal-content .close-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.modal-content .close-btn:hover {
+    background-color: #e63946;
+}
+
+
+/* Контейнер для жанров с горизонтальной прокруткой */
+.genre-row {
+    display: flex;
+    overflow-x: scroll;
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.genre-row button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.genre-row button:hover {
+    background-color: #ff4d4d;
+}
+
+/* Сетка для отображения фильмов */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Модальное окно для отображения информации */
+#movie-details-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    color: #fff;
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.modal-content .close-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.modal-content .close-btn:hover {
+    background-color: #e63946;
+}
+
+
+
+/* Скрытый список жанров, который появляется при клике */
+#genre-list {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    border-radius: 10px;
+}
+
+#genre-list button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+#genre-list button:hover {
+    background-color: #ff9f00;
+}
+
+#suggestions-container {
+    position: absolute;
+    top: 50px;  /* Adjust based on your layout */
+    left: 50%;  /* Center the suggestions */
+    transform: translateX(-50%);  /* Center the container */
+    width: 250px;  /* Same width as the search input */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+}
+
+.suggestion {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+}
+
+.suggestion:hover {
+    background-color: #f0f0f0;
+}
+

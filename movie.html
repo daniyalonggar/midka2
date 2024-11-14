@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies App</title>
+    <link rel="stylesheet" href="movie2.css">
+</head>
+<body>
+
+<header>
+    <h1 id="movies-title" onclick="loadMainPage()">Movies</h1>
+    <input type="text" id="search-input" placeholder="Search Movies..." onkeyup="searchMovies()">
+    <button onclick="loadMainPage()">Home</button>
+    <button onclick="loadWatchLaterPage()" id="watchlater-btn">Watch Later</button>
+    <div id="suggestions-container"></div>
+</header>
+
+<div id="main-page-container">
+    <div id="sort-buttons">
+        <button onclick="sortMovies('popularity')">Sort by Popularity</button>
+        <button onclick="sortMovies('release_date')">Sort by Release Date</button>
+        <button onclick="sortMovies('vote_average')">Sort by Rating</button>
+    </div>
+
+    <div id="genre-container">
+        <button onclick="loadMoviesByGenre(18)">Drama</button>
+        <button onclick="loadMoviesByGenre(35)">Comedy</button>
+        <button onclick="loadMoviesByGenre(9648)">Mystery</button>
+        <button onclick="loadMoviesByGenre(28)">Action</button>
+    </div>
+
+    <div id="movies-grid"></div>
+
+   
+</div>
+
+<div id="watchlater-container">
+    
+    <div id="watchlater-grid"></div>
+    <button onclick="showMainPage()">back</button>
+</div>
+
+<div id="movie-details-modal">
+    <div class="modal-content" id="movie-details">
+        <button onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script src="movie3.js"></script>
+</body>
+</html>
